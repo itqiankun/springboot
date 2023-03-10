@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Example If/Unless </title>
+</head>
+<body>
+<div >
+    <h2>map循环1</h2>
+    <table>
+        <tr th:each="map : ${userMap}">
+            <td th:text="${map.key} + | --- | + ${map.value}"></td>
+        </tr>
+    </table>
+    <h2>map循环2</h2>
+    <table>
+        <tr  th:each="user,userStat : ${userMap}">
+            <td th:text="${userStat.index}+1"></td>
+            <td th:text="${userStat.current.key}"></td><!-- key-->
+            <td th:text="${userStat.current.value}"></td><!-- value-->
+        </tr>
+    </table>
+    <h2>map循环3</h2>
+    <p th:text="${userMap.get(12)}"></p>
+    <p th:text="${interMap.get(1)}"></p>
+    <p th:text="${stringMap.get('1')}"></p>
+
+    <h2>map循环4</h2>
+    <p th:text="${userMap[12]}"></p>
+    <p th:text="${interMap[1]}"></p>
+    <p th:text="${stringMap['1']}"></p>
+
+    <h2>遍历list中的map循环</h2>
+    <tbody>
+    <tr th:each="entries,stat:${resultList}" >
+        <td th:text="${stat.count}"></td>
+        <td th:text="${entries['sid']}"></td>
+        <td th:text="${entries['sname']}"></td>
+        <td th:text="${entries['sage']}"></td>
+        <td th:text="${entries['scourse']['cname']}"></td>
+        <td th:text="${entries['scourse']['cscore']}"></td>
+        <br>
+    </tr>
+    </tbody>
+
+</div>
+</body>
+</html>

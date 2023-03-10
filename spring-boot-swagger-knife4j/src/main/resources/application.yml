@@ -1,0 +1,8 @@
+server:
+  port: 8000
+knife4j:
+  enable: true # knife4j的增强功能开启
+  basic:   # 使用用户名和密码
+    username: itqiankun.com
+    password: itqiankun.com
+    enable: true

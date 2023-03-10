@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Example If/Unless </title>
+</head>
+<style type="text/css">
+    body {
+        font-family: pingfang sc light;
+    }
+
+    .secondLevel{
+        padding-left: 15px;
+    }
+    .thirdLevel{
+        padding-left: 30px;
+    }
+    .productTree{
+        list-style:none;
+        font-size: 14px;
+        padding-left: 0px;
+        text-indent: 22px;
+    }
+    .productTree p{
+        margin: 0px;
+    }
+</style>
+<body>
+<div >
+    <h1>tree 循环</h1>
+    <ul class="productTree" th:each="firstLevel,itemFirstLevel:${tree.children}">
+        <span class="firstLevel"  th:text="(${itemFirstLevel.index}+1)+' '+${firstLevel.name}"></span>
+        <li  th:each="secondLevel,itemSecondLevel:${firstLevel.children}">
+            <span class="secondLevel" th:text="(${itemFirstLevel.index}+1)+'.'+(${itemSecondLevel.index}+1)+' '+${secondLevel.name}"></span>
+            <p  th:each="thirdLevel,itemThirdLevel:${secondLevel.children}">
+                <span class="thirdLevel" th:text="(${itemFirstLevel.index}+1)+'.'+(${itemSecondLevel.index}+1)+'.'+(${itemThirdLevel.index}+1)+' '+${thirdLevel.name}"></span>
+            </p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
